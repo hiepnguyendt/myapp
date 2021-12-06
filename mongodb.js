@@ -43,9 +43,9 @@ app.get('/', (req, resp) => {
 })
 
 
-/** 
+ /** 
  * @swagger 
- * components:
+ *  components:
  *      schema:
  *          Book:
  *              type: object
@@ -54,15 +54,25 @@ app.get('/', (req, resp) => {
  *                      type: integer
  *                  name:
  *                      type: string
-*/
+ */
 
-/** 
+
+ /** 
  * @swagger
  * /api/book:
  *  get:
  *      summary: To get all books from mongodb
- * f
-*/
+ *      decription: this api is used to fetch data from mongodb
+ *      responses:
+ *          200:    
+ *               description: this api is used to fetch data from mongodb
+ *               content:
+ *                   application/json:
+ *                       schema:
+ *                           type: array
+ *                           items:
+ *                               $ref: '#components/schema/Book/'
+ */
 
 app.get('/api/book/',(req, resp) =>  {
     database.collection('books').find({}).toArray((err, result) => {
